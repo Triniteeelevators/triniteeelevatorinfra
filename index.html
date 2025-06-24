@@ -1,0 +1,192 @@
+<!-- Full Project HTML: index.html with working product rendering -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trinitee Elevators</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    * {box-sizing: border-box;}
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; }
+    header { background: #003057; color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+    header nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    header nav a:hover { color: #ffc107; }
+    .hero {
+      background: url('https://source.unsplash.com/1600x900/?elevator,city') no-repeat center center/cover;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+    .hero h1 { font-size: 3.5rem; animation: fadeInDown 2s; }
+    .section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    .section h2 { text-align: center; color: #003057; margin-bottom: 30px; font-size: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s; padding-bottom: 20px; }
+    .card:hover { transform: translateY(-10px); }
+    .card img { width: 100%; height: 160px; object-fit: cover; }
+    .card h3 { margin: 15px; color: #003057; }
+    .card p { margin: 0 15px 10px; }
+    .card button, .card a.download-btn { margin: 0 15px 10px; padding: 8px 12px; background: #ffc107; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; color: white; display: inline-block; }
+    form { max-width: 600px; margin: auto; display: flex; flex-direction: column; }
+    form input, form textarea { padding: 12px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; }
+    form button { background: #003057; color: white; padding: 12px; border: none; border-radius: 6px; cursor: pointer; }
+    form button:hover { background: #0056b3; }
+    footer { background: #003057; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    #galleryModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
+    #galleryModal div { background: white; padding: 20px; border-radius: 10px; max-width: 800px; width: 100%; text-align: center; }
+    #galleryModal img { width: 200px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div><strong style="font-size: 1.8rem; text-transform: uppercase;">Trinitee Elevators</strong></div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#inquiry">Inquiry</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div style="text-align:center; color:white;">
+    <h1 class="animate__animated animate__fadeInDown">Shaping Urban Mobility</h1>
+    <div class="carousel" style="margin-top:30px; position:relative; width:90%; max-width:900px; height:160px; overflow:hidden; margin:auto;">
+      <div id="carouselInner" style="display:flex; width:max-content; transition:transform 0.5s ease;">
+        <img src="/mnt/data/download.jfif" alt="Elevator 1" style="width:180px; height:140px; object-fit:cover; border-radius:8px; margin-right:15px;" />
+        <img src="/mnt/data/download (1).jfif" alt="Elevator 2" style="width:180px; height:140px; object-fit:cover; border-radius:8px; margin-right:15px;" />
+        <img src="/mnt/data/download (2).jfif" alt="Elevator 3" style="width:180px; height:140px; object-fit:cover; border-radius:8px; margin-right:15px;" />
+        <img src="/mnt/data/images.jfif" alt="Elevator 4" style="width:180px; height:140px; object-fit:cover; border-radius:8px; margin-right:15px;" />
+        <img src="/mnt/data/images (1).jfif" alt="Elevator 5" style="width:180px; height:140px; object-fit:cover; border-radius:8px; margin-right:15px;" />
+        <img src="/mnt/data/images (2).jfif" alt="Elevator 6" style="width:180px; height:140px; object-fit:cover; border-radius:8px; margin-right:15px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <h2>Our Products</h2>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" id="solutions">
+  <h2>Solutions for Every Building</h2>
+  <div class="grid" id="solutionGrid"></div>
+</section>
+
+<section class="section" id="inquiry">
+  <div style="text-align:center; margin-bottom:20px;">
+    <a href="brochures/trinitee-elevator-brochure.pdf" download style="display:inline-block; background:#003057; color:white; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:bold;">Download Brochure</a>
+  </div>
+  <h2>Inquiry Form</h2>
+  <form action="https://formsubmit.co/triniteeelevators@gmail.com" method="POST">
+    <!-- Enable reCAPTCHA protection -->
+    <input type="hidden" name="_captcha" value="true">
+    <!-- Redirect to a thank you page after submission -->
+    <input type="hidden" name="_next" value="https://triniteeelevators.com/thank-you.html">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="service" placeholder="Interested Service" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <input type="text" name="_honey" style="display:none">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Inquiry from Website">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+    <button type="submit">Submit Inquiry</button>
+  </form>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact Us</h2>
+  <div style="max-width:700px; margin:auto; font-size:1.1rem; line-height:1.8;">
+    <p><strong>Trinitee Elevators Pvt. Ltd.</strong></p>
+    <p>123 Lift Street, Industrial Zone,<br>Mumbai, Maharashtra, India - 400001</p>
+    <p><strong>Phone:</strong> +91 98765 43210<br>
+    <strong>Email:</strong> contact@triniteeelevators.com</p>
+    <p><strong>Working Hours:</strong> Mon - Sat: 9:00 AM to 6:00 PM</p>
+    <p>
+      <strong>Follow Us:</strong><br>
+      <a href="#" style="color:#003057;"><i class="fab fa-facebook"></i> Facebook</a> |
+      <a href="#" style="color:#003057;"><i class="fab fa-instagram"></i> Instagram</a> |
+      <a href="#" style="color:#003057;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Trinitee Elevators. All rights reserved.
+</footer>
+
+<div id="galleryModal">
+  <div>
+    <h3>Gallery</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:15px;">
+      <img src="https://source.unsplash.com/300x200/?elevator,home" />
+      <img src="https://source.unsplash.com/301x200/?residential,elevator" />
+      <img src="https://source.unsplash.com/302x200/?villa,elevator" />
+    </div>
+    <br>
+    <button onclick="document.getElementById('galleryModal').style.display='none'">Close</button>
+  </div>
+</div>
+
+<script>
+  const products = [
+    { title: "Passenger Elevators", desc: "Smooth rides for every floor.", img: "https://source.unsplash.com/400x200/?passenger,elevator" },
+    { title: "Hospital Lifts", desc: "Spacious and hygienic hospital elevators.", img: "https://source.unsplash.com/400x200/?hospital,elevator" },
+    { title: "Goods Lifts", desc: "Strong and reliable goods transporters.", img: "https://source.unsplash.com/400x200/?freight,elevator" },
+    { title: "Home Lifts", desc: "Compact and stylish elevators for homes.", img: "https://source.unsplash.com/400x200/?home,elevator" }
+  ];
+  const solutions = [
+    { title: "New Buildings", desc: "Smart solutions for upcoming structures.", img: "https://source.unsplash.com/400x200/?construction,building" },
+    { title: "Modernization", desc: "Upgrade your old elevators today.", img: "https://source.unsplash.com/400x200/?modern,building" },
+    { title: "Maintenance", desc: "Keep elevators in top condition.", img: "https://source.unsplash.com/400x200/?maintenance,technician" }
+  ];
+  function showGallery() {
+    document.getElementById("galleryModal").style.display = "flex";
+  }
+  function renderCards(items, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = items.map(item => `
+      <div class="card">
+        <img src="${item.img}" alt="${item.title}">
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+        <button onclick="showGallery()">View Gallery</button>
+        
+      </div>
+    `).join('');
+  }
+  renderCards(products, 'productGrid');
+  const solutionContainer = document.getElementById('solutionGrid');
+if (solutionContainer) {
+  solutionContainer.innerHTML = solutions.map(item => `
+    <div class="card">
+      <img src="${item.img}" alt="${item.title}">
+      <h3>${item.title}</h3>
+      <p>${item.desc}</p>
+    </div>
+  `).join('');
+}
+
+  let offset = 0;
+  setInterval(() => {
+    const carousel = document.getElementById('carouselInner');
+    offset -= 195;
+    if (Math.abs(offset) >= carousel.scrollWidth - 900) offset = 0;
+    carousel.style.transform = `translateX(${offset}px)`;
+  }, 2000);
+</script>
+
+</body>
+</html>
