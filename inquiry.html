@@ -6,7 +6,287 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inquiry - Trinitee Elevators</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .inquiry-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .form-description {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .form-group select {
+      background-color: #fff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-group label a {
+      color: #003057;
+      text-decoration: none;
+    }
+
+    .checkbox-group label a:hover {
+      text-decoration: underline;
+    }
+
+    .submit-button {
+      background-color: #003057;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #005082;
+    }
+
+    @media (max-width: 768px) {
+      .inquiry-form {
+        padding: 20px;
+      }
+    }
+
+    .required:after {
+      content: " *";
+      color: #ff4444;
+    }
+
+    /* Bootstrap validation styles */
+    .was-validated .form-control:invalid {
+      border-color: #dc3545;
+      padding-right: calc(1.5em + 0.75rem);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .was-validated .form-control:valid {
+      border-color: #198754;
+      padding-right: calc(1.5em + 0.75rem);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .form-control-feedback {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+    .inquiry-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .form-description {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .form-group select {
+      background-color: #fff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-group label a {
+      color: #003057;
+      text-decoration: none;
+    }
+
+    .checkbox-group label a:hover {
+      text-decoration: underline;
+    }
+
+    .submit-button {
+      background-color: #003057;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #005082;
+    }
+
+    @media (max-width: 768px) {
+      .inquiry-form {
+        padding: 20px;
+      }
+    }
+
+    .required:after {
+      content: " *";
+      color: #ff4444;
+    }
+  </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.inquiry-form');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const serviceSelect = document.getElementById('service');
+    const buildingTypeSelect = document.getElementById('building-type');
+    const messageInput = document.getElementById('message');
+    
+    // Email validation
+    emailInput.addEventListener('input', function() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value)) {
+            emailInput.setCustomValidity('Please enter a valid email address');
+        } else {
+            emailInput.setCustomValidity('');
+        }
+    });
+
+    // Phone number validation
+    phoneInput.addEventListener('input', function() {
+        const phoneRegex = /^[6-9]\d{9}$/; // Indian mobile numbers start with 6-9 and have 10 digits
+        if (!phoneRegex.test(phoneInput.value)) {
+            phoneInput.setCustomValidity('Please enter a valid 10-digit mobile number');
+        } else {
+            phoneInput.setCustomValidity('');
+        }
+    });
+
+    // Name validation
+    nameInput.addEventListener('input', function() {
+        const nameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces
+        if (!nameRegex.test(nameInput.value)) {
+            nameInput.setCustomValidity('Please enter a valid name (letters only)');
+        } else {
+            nameInput.setCustomValidity('');
+        }
+    });
+
+    // Service selection validation
+    serviceSelect.addEventListener('change', function() {
+        if (serviceSelect.value === '') {
+            serviceSelect.setCustomValidity('Please select a service');
+        } else {
+            serviceSelect.setCustomValidity('');
+        }
+    });
+
+    // Building type selection validation
+    buildingTypeSelect.addEventListener('change', function() {
+        if (buildingTypeSelect.value === '') {
+            buildingTypeSelect.setCustomValidity('Please select a building type');
+        } else {
+            buildingTypeSelect.setCustomValidity('');
+        }
+    });
+
+    // Message validation
+    messageInput.addEventListener('input', function() {
+        if (messageInput.value.length < 10) {
+            messageInput.setCustomValidity('Please provide more details (minimum 10 characters)');
+        } else {
+            messageInput.setCustomValidity('');
+        }
+    });
+
+    // Form submission validation
+    form.addEventListener('submit', function(e) {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Show error messages
+            form.classList.add('was-validated');
+        }
+    });
+});
+</script>
 </head>
 <body>
 
@@ -24,23 +304,71 @@
 
 <section class="section">
   
-  <h2>Inquiry Form</h2>
-  <form action="https://formsubmit.co/triniteeelevators@gmail.com" method="POST">
+  <h2>Get in Touch</h2>
+  <p class="form-description">Please fill out the form below and we'll get back to you as soon as possible.</p>
+  <form action="https://formsubmit.co/triniteeelevators@gmail.com" method="POST" class="inquiry-form">
     <input type="hidden" name="_captcha" value="true">
     <input type="hidden" name="_next" value="thankyou.html">
     <input type="hidden" name="_subject" value="New Inquiry from Website">
     <input type="hidden" name="_template" value="table">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="text" name="service" placeholder="Interested Service" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    
+    <div class="form-group">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Mobile Number *</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location *</label>
+      <input type="text" id="location" name="location" required>
+    </div>
+
+    <div class="form-group">
+      <label for="service">Interested Service *</label>
+      <select id="service" name="service" required>
+        <option value="">Select Service</option>
+        <option value="Installation">Elevator Installation</option>
+        <option value="Modernization">Elevator Modernization</option>
+        <option value="Maintenance">Elevator Maintenance</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="building-type">Building Type *</label>
+      <select id="building-type" name="building-type" required>
+        <option value="">Select Building Type</option>
+        <option value="Residential">Residential</option>
+        <option value="Commercial">Commercial</option>
+        <option value="Hospital">Hospital</option>
+        <option value="Industrial">Industrial</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Additional Information *</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="submit-button">Submit Inquiry</button>
+    </div>
+
     <input type="text" name="_honey" style="display:none">
-    <button type="submit">Submit Inquiry</button>
   </form>
 </section>
 
 <footer>
-  &copy; 2025 Trinitee Elevators. All rights reserved.
+  &copy; 2025 Trinitee Elevator Infra Pvt Ltd. All rights reserved.
 </footer>
 
 </body>
